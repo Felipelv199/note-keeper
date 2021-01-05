@@ -1,6 +1,10 @@
 import express from 'express';
-//const express = require('express');
+import dotenv from 'dotenv';
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 const app = express();
 
-app.listen(8080, () => console.log('Listening in port 8080'));
+app.listen(process.env.PORT, () => console.log('Listening in port 8080'));
