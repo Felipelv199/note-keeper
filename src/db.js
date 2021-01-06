@@ -1,10 +1,10 @@
-import mongoose, { connect } from 'mongoose';
+import { connect, connection } from 'mongoose';
 
-mongoose.connect('mongodb://localhost:27017/note-keeper', {
+connect('mongodb://localhost:27017/note-keeper', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-mongoose.connection.on('error', (error) => console.log(error));
+connection.on('error', (error) => console.error(error));
 
-mongoose.connection.on('connected', () => console.log('DB is connected'));
+connection.once('open', () => console.log('DB is connected'));
